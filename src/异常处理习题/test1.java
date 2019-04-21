@@ -7,13 +7,22 @@ package 异常处理习题;
  * 则抛出自定义异常对象。最后写一个测试类，
  * 调用自定义工具类的parseInt方法，并进行异常捕获处理。
  */
+class  MYException extends Exception{
+    public  MYException(String message){
+        super(message);
+    }
+    public String getMessage(){
+        return String.format("\"%s\"",Thread.currentThread().getName())+"For input string:"+super.getMessage();
+    }
+}
 class Mytool{
-    public static int Parseint(String str ){
+    public static int Parseint(String str ) throws MYException {
         int result = 0;
         int i;
         for(i=0;i<str.length();i++){
             char ch =str.charAt(i);
             if(ch>='0'&&ch<='9')result= result*10+ch-'0';
+            else throw new MYException(str);
         }
         return result;
     }
@@ -21,6 +30,10 @@ class Mytool{
 public class test1 {
 
     public static void main(String[] args) {
-        System.out.println(Mytool.Parseint("123a"));
+        try {
+            System.out.println(Mytool.Parseint("123a"));
+        } catch (MYException e) {
+            e.printStackTrace();
+        }
     }
 }
