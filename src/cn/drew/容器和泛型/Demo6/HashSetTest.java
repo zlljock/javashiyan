@@ -27,7 +27,7 @@ public class HashSetTest {
         System.out.println("c2="+c2.hashCode());
         System.out.println("c5="+c5.hashCode());
        //c1和c5的hashCode值相同，如果两个对象的hashcode
-        // 相同，不一定是同一个对象，如果不同，那一定不是同一个对象
+        // 相同，不一定是同一个对象，如果不同，那一定不是同一个对象..
 
     }
 
